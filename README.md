@@ -1,4 +1,4 @@
-[![Build Status](https://drone.io/github.com/0intro/libelf/status.png)](https://drone.io/github.com/0intro/libelf/latest)
+[![Build Status](https://travis-ci.org/0intro/libelf.svg?branch=master)](https://travis-ci.org/0intro/libelf)
 [![Coverity Scan Build Status](https://scan.coverity.com/projects/0intro-libelf/badge.svg)](https://scan.coverity.com/projects/0intro-libelf)
 
 libelf

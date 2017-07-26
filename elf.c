@@ -467,7 +467,6 @@ readident(FILE *f, Fhdr *fp)
 	for (i = 0; i < nelem(class); i++) {
 		if (buf[EI_CLASS] != class[i].type)
 			continue;
-		printf("class: %s\n", class[i].name);
 		if (class[i].readelfehdr == NULL)
 			return -1;
 		fp->readelfehdr = class[i].readelfehdr;
@@ -486,7 +485,6 @@ readident(FILE *f, Fhdr *fp)
 	for (i = 0; i < nelem(data); i++) {
 		if (buf[EI_DATA] != data[i].type)
 			continue;
-		printf("data encoding: %s\n", data[i].name);
 		if (data[i].get8 == NULL)
 			return -1;
 		fp->get8 = data[i].get8;

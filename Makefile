@@ -10,8 +10,8 @@ LIB=libelf.a
 
 OFILES=\
 	elf.o\
-	machines.o\
 	print.o\
+	str.o\
 
 HFILES=\
 	dat.h\

@@ -28,6 +28,10 @@ struct Fhdr {
 	...
 
 	/* ELF Header */
+	uint16_t	type;
+	uint16_t	machine;
+	uint32_t	version;
+	uint64_t	entry;
 	uint64_t	phoff;
 	uint64_t	shoff;
 	uint16_t	ehsize;		/* ELF Header size */

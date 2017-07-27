@@ -164,6 +164,11 @@ readelf32ehdr(FILE *f, Fhdr *fp)
 		return -1;
 	}
 
+	fp->type = e.type;
+	fp->machine = e.machine;
+	fp->version = e.version;
+	fp->entry = e.entry;
+
 	fp->shoff = e.shoff;
 	fp->phoff = e.phoff;
 	fp->phnum = e.phnum;
@@ -228,6 +233,11 @@ readelf64ehdr(FILE *f, Fhdr *fp)
 		fprintf(stderr, "phentsize mismatch; want %u; got %u\n", fp->ehsize, e.ehsize);
 		return -1;
 	}
+
+	fp->type = e.type;
+	fp->machine = e.machine;
+	fp->version = e.version;
+	fp->entry = e.entry;
 
 	fp->shoff = e.shoff;
 	fp->phoff = e.phoff;

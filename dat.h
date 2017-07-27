@@ -329,8 +329,8 @@ enum {
  * Object file version
  */
 enum {
-	EV_NONE		= 0,	/* Invalid*/
-	EV_CURRENT	= 1,	/* Current*/
+	EV_NONE		= 0,	/* Invalid */
+	EV_CURRENT	= 1,	/* Current */
 };
 
 /*

@@ -66,6 +66,7 @@ Functions
 int readelf(FILE *f, Fhdr *fp);
 uint8_t* readelfsection(FILE *f, char *name, uint64_t *size, Fhdr *fp);
 void freeelf(Fhdr *fp);
+char* elfclass(uint8_t class);
 char* elftype(uint16_t type);
 char* elfmachine(uint16_t machine);
 char* elfversion(uint8_t version);

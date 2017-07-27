@@ -2,6 +2,21 @@
 
 #include "dat.h"
 
+static char* classstr[] = {
+	[ELFCLASSNONE] = "Invalid class",
+	[ELFCLASS32] = "32-bit objects",
+	[ELFCLASS64] = "64-bit objects",
+};
+
+char*
+elfclass(uint8_t class)
+{
+        if(class < nelem(classstr) && classstr[class])
+                return classstr[class];
+
+        return "Unknown class";
+}
+
 char *machinestr[] = {
 	[EM_NONE] = "No machine",
 	[EM_M32] = "AT&T WE 32100",

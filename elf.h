@@ -47,10 +47,15 @@ struct Fhdr {
 	uint8_t		*strndx;	/* Copy of String Table */
 };
 
+/* Read */
 int readelf(FILE*, Fhdr*);
 uint8_t* readelfsection(FILE*, char*, uint64_t*, Fhdr*);
 void freeelf(Fhdr*);
+
+/* Print */
 void printelfhdr(Fhdr*);
+
+/* String */
 char* elfclass(uint8_t);
 char* elfdata(uint8_t);
 char* elfosabi(uint8_t);

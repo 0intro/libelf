@@ -2,7 +2,7 @@
 
 #include "dat.h"
 
-char *machines[] = {
+char *machinestr[] = {
 	[EM_NONE] = "No machine",
 	[EM_M32] = "AT&T WE 32100",
 	[EM_SPARC] = "SPARC",
@@ -186,3 +186,12 @@ char *machines[] = {
 	[EM_AMDGPU] = "AMD GPU architecture",
 	[EM_RISCV] = "RISC-V"
 };
+
+char*
+elfmachine(uint16_t machine)
+{
+        if(machine < nelem(machinestr) && machinestr[machine])
+                return machinestr[machine];
+
+        return "Unknown machine";
+}

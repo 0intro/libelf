@@ -1,7 +1,7 @@
 #define USED(x) if(x){}else{}
 #define nelem(x) (sizeof(x)/sizeof((x)[0]))
 
-extern char *machines[];
+extern char *machinestr[];
 
 #define EI_NIDENT 16
 

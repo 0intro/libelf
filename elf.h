@@ -51,3 +51,4 @@ int readelf(FILE*, Fhdr*);
 uint8_t* readelfsection(FILE*, char*, uint64_t*, Fhdr*);
 void freeelf(Fhdr*);
 char* elftype(uint16_t);
+char* elfmachine(uint16_t);

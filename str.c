@@ -17,6 +17,21 @@ elfclass(uint8_t class)
         return "Unknown class";
 }
 
+static char* datastr[] = {
+	[ELFDATANONE] = "Invalid data encoding",
+	[ELFDATA2LSB] = "Litte-endian",
+	[ELFDATA2MSB] = "Big-endian",
+};
+
+char*
+elfdata(uint8_t data)
+{
+        if(data < nelem(datastr) && datastr[data])
+                return datastr[data];
+
+        return "Unknown data";
+}
+
 char *machinestr[] = {
 	[EM_NONE] = "No machine",
 	[EM_M32] = "AT&T WE 32100",

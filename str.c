@@ -32,6 +32,35 @@ elfdata(uint8_t data)
         return "Unknown data";
 }
 
+static char* osabistr[] = {
+	[ELFOSABI_NONE] = "No extensions or unspecified",
+	[ELFOSABI_HPUX] = "Hewlett-Packard HP-UX",
+	[ELFOSABI_NETBSD] = "NetBSD",
+	[ELFOSABI_GNU] = "GNU ",
+	[ELFOSABI_SOLARIS] = "Sun Solaris",
+	[ELFOSABI_AIX] = "AIX",
+	[ELFOSABI_IRIX] = "IRIX",
+	[ELFOSABI_FREEBSD] = "FreeBSD",
+	[ELFOSABI_TRU64] = "Compaq TRU64 UNIX",
+	[ELFOSABI_MODESTO] = "Novell Modesto",
+	[ELFOSABI_OPENBSD] = "Open BSD",
+	[ELFOSABI_OPENVMS] = "Open VMS",
+	[ELFOSABI_NSK] = "Hewlett-Packard Non-Stop Kernel",
+	[ELFOSABI_AROS] = "Amiga Research OS",
+	[ELFOSABI_FENIXOS] = "The FenixOS highly scalable multi-core OS",
+	[ELFOSABI_CLOUDABI] = "Nuxi CloudABI",
+	[ELFOSABI_OPENVOS] = "Stratus Technologies OpenVOS",
+};
+
+char*
+elfosabi(uint8_t data)
+{
+        if(data < nelem(osabistr) && osabistr[data])
+                return osabistr[data];
+
+        return "Unknown osabi";
+}
+
 char *machinestr[] = {
 	[EM_NONE] = "No machine",
 	[EM_M32] = "AT&T WE 32100",

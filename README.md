@@ -68,6 +68,7 @@ uint8_t* readelfsection(FILE *f, char *name, uint64_t *size, Fhdr *fp);
 void freeelf(Fhdr *fp);
 char* elfclass(uint8_t class);
 char* elfdata(uint8_t data);
+char* elfosabi(uint8_t osabi);
 char* elftype(uint16_t type);
 char* elfmachine(uint16_t machine);
 char* elfversion(uint8_t version);

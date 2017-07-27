@@ -444,6 +444,8 @@ readident(FILE *f, Fhdr *fp)
 	unsigned int i;
 	uint8_t *p;
 
+	fseek(f, 0, SEEK_SET);
+
 	p = buf;
 	if (fread(p, EI_NIDENT, 1, f) != 1)
 		return -1;

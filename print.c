@@ -127,3 +127,16 @@ printelf64phdr(Elf64_Phdr *ph, Fhdr *fp)
 	printf("align 0x%.16" PRIx64 "\n", ph->align);
 	printf("\n");
 }
+
+void
+printelfhdr(Fhdr *fp)
+{
+	printident(fp);
+	printf("type %s (0x%.4x)\n", elftype(fp->type), fp->type);
+	printf("machine %s (0x%.4x)\n", elfmachine(fp->machine), fp->machine);
+	printf("version %s (%u)\n", elfversion(fp->version), fp->version);
+	if (fp->class == ELFCLASS32)
+		printf("entry 0x%.4ux\n", (uint32_t)fp->entry);
+	if (fp->class == ELFCLASS64)
+		printf("entry 0x%.8" PRIx64 "\n", fp->entry);
+}

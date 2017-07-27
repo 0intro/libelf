@@ -50,6 +50,7 @@ struct Fhdr {
 int readelf(FILE*, Fhdr*);
 uint8_t* readelfsection(FILE*, char*, uint64_t*, Fhdr*);
 void freeelf(Fhdr*);
+void printelfhdr(Fhdr*);
 char* elfclass(uint8_t);
 char* elfdata(uint8_t);
 char* elfosabi(uint8_t);

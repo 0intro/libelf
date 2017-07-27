@@ -66,6 +66,7 @@ Functions
 int readelf(FILE *f, Fhdr *fp);
 uint8_t* readelfsection(FILE *f, char *name, uint64_t *size, Fhdr *fp);
 void freeelf(Fhdr *fp);
+void printelfhdr(Fhdr *fp);
 char* elfclass(uint8_t class);
 char* elfdata(uint8_t data);
 char* elfosabi(uint8_t osabi);

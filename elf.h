@@ -16,6 +16,13 @@ struct Fhdr {
 	int (*readelfphdr)(FILE*, Fhdr*);
 	int (*readelfstrndx)(FILE*, Fhdr*);
 
+	/* ELF Identification */
+	uint8_t		class;		/* File class */
+	uint8_t		data;		/* Data encoding */
+	uint8_t		elfversion;	/* File version */
+	uint8_t		osabi;		/* Operating system/ABI identification */
+	uint8_t		abiversion;	/* ABI version */
+
 	/* ELF Header */
 	uint16_t	type;
 	uint16_t	machine;

@@ -509,6 +509,12 @@ readident(FILE *f, Fhdr *fp)
 	if (i == nelem(data))
 		return -1;
 
+	fp->class = buf[EI_CLASS];
+	fp->data = buf[EI_DATA];
+	fp->elfversion = buf[EI_VERSION];
+	fp->osabi = buf[EI_OSABI];
+	fp->abiversion = buf[EI_ABIVERSION];
+
 	return p - buf;
 }
 

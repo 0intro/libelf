@@ -218,3 +218,17 @@ elfmachine(uint16_t machine)
 
         return "Unknown machine";
 }
+
+char *versionstr[] = {
+	[EV_NONE] = "Invalid",
+	[EV_CURRENT] = "Current",
+};
+
+char*
+elfversion(uint8_t version)
+{
+        if(version < nelem(versionstr) && versionstr[version])
+                return versionstr[version];
+
+        return "Unknown version";
+}

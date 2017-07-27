@@ -349,16 +349,29 @@ enum {
 	EI_PAD		= 9,	/* Start of padding bytes */
 };
 
+/*
+ * ELF Magic Number
+ */
 enum {
 	ELFMAG0		= 0x7f,	/* e_ident[EI_MAG0] */
 	ELFMAG1		= 'E',	/* e_ident[EI_MAG1] */
 	ELFMAG2		= 'L',	/* e_ident[EI_MAG2] */
 	ELFMAG3		= 'F',	/* e_ident[EI_MAG3] */
+};
 
+/*
+ * File class
+ */
+enum {
 	ELFCLASSNONE	= 0,	/* Invalid class */
 	ELFCLASS32	= 1,	/* 32-bit objects */
 	ELFCLASS64	= 2,	/* 64-bit objects */
+};
 
+/*
+ * Data encoding
+ */
+enum {
 	ELFDATANONE	= 0,	/* Invalid data encoding */
 	ELFDATA2LSB	= 1,	/* Litte-endian */
 	ELFDATA2MSB	= 2,	/* Big-endian */

@@ -187,6 +187,29 @@ char *machinestr[] = {
 	[EM_RISCV] = "RISC-V"
 };
 
+char *typestr[] = {
+	[ET_NONE] = "No file type",
+	[ET_REL] = "Relocatable file",
+	[ET_EXEC] = "Executable file",
+	[ET_DYN] = "Shared object file",
+	[ET_CORE] = "Core file",
+};
+
+char*
+elftype(uint16_t type)
+{
+        if(type < nelem(typestr) && typestr[type])
+                return typestr[type];
+
+	if (type >= ET_LOOS && type <= ET_HIOS)
+		return "Operating system-specific";
+
+	if (type >= ET_LOPROC)
+		return "Processor-specific";
+
+        return "Unknown type";
+}
+
 char*
 elfmachine(uint16_t machine)
 {

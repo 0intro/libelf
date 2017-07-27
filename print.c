@@ -13,7 +13,7 @@ printelf32ehdr(Elf32_Ehdr *e, Fhdr *fp)
 	printf("ident %.2x %c %c %c %.2x %.2x %.2x %.2x %.2x %.2x %.2x %.2x %.2x %.2x %.2x %.2x\n",
 		e->ident[0], e->ident[1], e->ident[2], e->ident[3], e->ident[4], e->ident[5], e->ident[6], e->ident[7],
 		e->ident[8], e->ident[9], e->ident[10], e->ident[11], e->ident[12], e->ident[13], e->ident[14], e->ident[15]);
-	printf("type %u\n", e->type);
+	printf("type %s (0x%.4x)\n", elftype(e->type), e->type);
 	printf("machine %s (0x%.4x)\n", elfmachine(e->machine), e->machine);
 	printf("version %u\n", e->version);
 	printf("entry 0x%.8x\n", e->entry);
@@ -36,7 +36,7 @@ printelf64ehdr(Elf64_Ehdr *e, Fhdr *fp)
 	printf("ident %.2x %c %c %c %.2x %.2x %.2x %.2x %.2x %.2x %.2x %.2x %.2x %.2x %.2x %.2x\n",
 		e->ident[0], e->ident[1], e->ident[2], e->ident[3], e->ident[4], e->ident[5], e->ident[6], e->ident[7],
 		e->ident[8], e->ident[9], e->ident[10], e->ident[11], e->ident[12], e->ident[13], e->ident[14], e->ident[15]);
-	printf("type %u\n", e->type);
+	printf("type %s (0x%.4x)\n", elftype(e->type), e->type);
 	printf("machine %s (0x%.4x)\n", elfmachine(e->machine), e->machine);
 	printf("version %u\n", e->version);
 	printf("entry 0x%.16" PRIx64 "\n", e->entry);

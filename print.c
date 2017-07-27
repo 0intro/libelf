@@ -7,12 +7,22 @@
 #include "fns.h"
 
 void
+printident(Fhdr *fp)
+{
+	printf("class %s (0x%.2x)\n", elfclass(fp->class), fp->class);
+	printf("data %s (0x%.2x)\n", elfdata(fp->data), fp->data);
+	printf("version %s (%u)\n", elfversion(fp->version), fp->version);
+	printf("os abi %s (0x%.2x)\n", elfosabi(fp->osabi), fp->osabi);
+	printf("abi version %u\n", fp->abiversion);
+}
+
+void
 printelf32ehdr(Elf32_Ehdr *e, Fhdr *fp)
 {
-	USED(fp);
 	printf("ident %.2x %c %c %c %.2x %.2x %.2x %.2x %.2x %.2x %.2x %.2x %.2x %.2x %.2x %.2x\n",
 		e->ident[0], e->ident[1], e->ident[2], e->ident[3], e->ident[4], e->ident[5], e->ident[6], e->ident[7],
 		e->ident[8], e->ident[9], e->ident[10], e->ident[11], e->ident[12], e->ident[13], e->ident[14], e->ident[15]);
+	printident(fp);
 	printf("type %s (0x%.4x)\n", elftype(e->type), e->type);
 	printf("machine %s (0x%.4x)\n", elfmachine(e->machine), e->machine);
 	printf("version %s (%u)\n", elfversion(e->version), e->version);
@@ -32,10 +42,10 @@ printelf32ehdr(Elf32_Ehdr *e, Fhdr *fp)
 void
 printelf64ehdr(Elf64_Ehdr *e, Fhdr *fp)
 {
-	USED(fp);
 	printf("ident %.2x %c %c %c %.2x %.2x %.2x %.2x %.2x %.2x %.2x %.2x %.2x %.2x %.2x %.2x\n",
 		e->ident[0], e->ident[1], e->ident[2], e->ident[3], e->ident[4], e->ident[5], e->ident[6], e->ident[7],
 		e->ident[8], e->ident[9], e->ident[10], e->ident[11], e->ident[12], e->ident[13], e->ident[14], e->ident[15]);
+	printident(fp);
 	printf("type %s (0x%.4x)\n", elftype(e->type), e->type);
 	printf("machine %s (0x%.4x)\n", elfmachine(e->machine), e->machine);
 	printf("version %s (%u)\n", elfversion(e->version), e->version);

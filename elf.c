@@ -120,7 +120,8 @@ readelf32ehdr(FILE *f, Fhdr *fp)
 
 	p = buf;
 
-	fseek(f, 0, SEEK_SET);
+	if (fseek(f, 0, SEEK_SET) < 0)
+		return -1;
 
 	if (fread(p, fp->ehsize, 1, f) != 1)
 		return -1;
@@ -190,7 +191,8 @@ readelf64ehdr(FILE *f, Fhdr *fp)
 
 	p = buf;
 
-	fseek(f, 0, SEEK_SET);
+	if (fseek(f, 0, SEEK_SET) < 0)
+		return -1;
 
 	if (fread(p, fp->ehsize , 1, f) != 1)
 		return -1;
@@ -454,7 +456,8 @@ readident(FILE *f, Fhdr *fp)
 	unsigned int i;
 	uint8_t *p;
 
-	fseek(f, 0, SEEK_SET);
+	if (fseek(f, 0, SEEK_SET) < 0)
+		return -1;
 
 	p = buf;
 	if (fread(p, EI_NIDENT, 1, f) != 1)
@@ -526,7 +529,8 @@ readelfshdrs(FILE *f, Fhdr *fp)
 {
 	unsigned int i;
 
-	fseek(f, fp->shoff, SEEK_SET);
+	if (fseek(f, fp->shoff, SEEK_SET) < 0)
+		return -1;
 
 	for (i = 0; i < fp->shnum; i++) {
 		if (fp->readelfshdr(f, fp) < 0)
@@ -544,7 +548,8 @@ readelfphdrs(FILE *f, Fhdr *fp)
 {
 	unsigned int i;
 
-	fseek(f, fp->phoff, SEEK_SET);
+	if (fseek(f, fp->phoff, SEEK_SET) < 0)
+		return -1;
 
 	for (i = 0; i < fp->phnum; i++) {
 		if (fp->readelfphdr(f, fp) < 0)
@@ -563,7 +568,8 @@ readelf32strndx(FILE *f, Fhdr *fp)
 	uint8_t buf[Sh32sz];
 	Elf32_Shdr sh;
 
-	fseek(f, fp->shoff + fp->shstrndx * fp->shentsize, SEEK_SET);
+	if (fseek(f, fp->shoff + fp->shstrndx * fp->shentsize, SEEK_SET) < 0)
+		return -1;
 
 	if (fread(buf, fp->shentsize, 1, f) != 1)
 		return -1;
@@ -586,7 +592,8 @@ readelf64strndx(FILE *f, Fhdr *fp)
 	uint8_t buf[Sh64sz];
 	Elf64_Shdr sh;
 
-	fseek(f, fp->shoff + fp->shstrndx * fp->shentsize, SEEK_SET);
+	if (fseek(f, fp->shoff + fp->shstrndx * fp->shentsize, SEEK_SET) < 0)
+		return -1;
 
 	if (fread(buf, fp->shentsize, 1, f) != 1)
 		return -1;
@@ -609,7 +616,10 @@ newsection(FILE *f, uint64_t offset, uint64_t size)
 	if (sect == NULL)
 		return NULL;
 
-	fseek(f, offset, SEEK_SET);
+	if (fseek(f, offset, SEEK_SET) < 0) {
+		free(sect);
+		return NULL;
+	}
 
 	if (fread(sect, size, 1, f) != 1) {
 		free(sect);
@@ -663,7 +673,8 @@ readelfsect(FILE *f, char *name, Fhdr *fp)
 	unsigned int i;
 	char *n;
 
-	fseek(f, fp->shoff, SEEK_SET);
+	if (fseek(f, fp->shoff, SEEK_SET) < 0)
+		return NULL;
 
 	for (i = 0; i < fp->shnum; i++) {
 		if (fp->readelfshdr(f, fp) < 0)

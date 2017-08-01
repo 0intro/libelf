@@ -176,7 +176,7 @@ readelf32ehdr(FILE *f, Fhdr *fp)
 	fp->shnum = e.shnum;
 	fp->shstrndx = e.shstrndx;
 
-	return p - buf;
+	return (int)(p - buf);
 }
 
 /*
@@ -247,7 +247,7 @@ readelf64ehdr(FILE *f, Fhdr *fp)
 	fp->shnum = e.shnum;
 	fp->shstrndx = e.shstrndx;
 
-	return p - buf;
+	return (int)(p - buf);
 }
 
 /*
@@ -518,7 +518,7 @@ readident(FILE *f, Fhdr *fp)
 	fp->osabi = buf[EI_OSABI];
 	fp->abiversion = buf[EI_ABIVERSION];
 
-	return p - buf;
+	return (int)(p - buf);
 }
 
 /*

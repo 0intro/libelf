@@ -568,7 +568,7 @@ readelf32strndx(FILE *f, Fhdr *fp)
 	uint8_t buf[Sh32sz];
 	Elf32_Shdr sh;
 
-	if (fseek(f, fp->shoff + fp->shstrndx * fp->shentsize, SEEK_SET) < 0)
+	if (fseek(f, fp->shoff + (uint64_t)(fp->shstrndx * fp->shentsize), SEEK_SET) < 0)
 		return -1;
 
 	if (fread(buf, fp->shentsize, 1, f) != 1)
@@ -592,7 +592,7 @@ readelf64strndx(FILE *f, Fhdr *fp)
 	uint8_t buf[Sh64sz];
 	Elf64_Shdr sh;
 
-	if (fseek(f, fp->shoff + fp->shstrndx * fp->shentsize, SEEK_SET) < 0)
+	if (fseek(f, fp->shoff + (uint64_t)(fp->shstrndx * fp->shentsize), SEEK_SET) < 0)
 		return -1;
 
 	if (fread(buf, fp->shentsize, 1, f) != 1)

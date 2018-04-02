@@ -145,7 +145,7 @@ readelf32ehdr(FILE *f, Fhdr *fp)
 	if (verbose)
 		printelf32ehdr(&e, fp);
 
-	if (e.type != ET_REL && e.type != ET_EXEC) {
+	if (e.type != ET_REL && e.type != ET_EXEC && e.type != ET_DYN && e.type != ET_CORE) {
 		fprintf(stderr, "unsupported file type %d\n", e.type);
 		return -1;
 	}
@@ -216,7 +216,7 @@ readelf64ehdr(FILE *f, Fhdr *fp)
 	if (verbose)
 		printelf64ehdr(&e, fp);
 
-	if (e.type != ET_REL && e.type != ET_EXEC) {
+	if (e.type != ET_REL && e.type != ET_EXEC && e.type != ET_DYN && e.type != ET_CORE) {
 		fprintf(stderr, "unsupported file type %d\n", e.type);
 		return -1;
 	}

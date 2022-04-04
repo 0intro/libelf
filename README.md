@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/0intro/libelf.svg?branch=master)](https://travis-ci.org/0intro/libelf)
+[![Build Status](https://github.com/0intro/libelf/workflows/C/badge.svg)](https://github.com/0intro/libelf/actions/workflows/c.yml)
 [![Coverity Scan Build Status](https://scan.coverity.com/projects/0intro-libelf/badge.svg)](https://scan.coverity.com/projects/0intro-libelf)
 
 libelf

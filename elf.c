@@ -640,6 +640,11 @@ readelfstrndx(FILE *f, Fhdr *fp)
 		return -1;
 	}
 
+	if (fp->shstrndx >= fp->shnum) {
+		fprintf(stderr, "shstrndx out of range\n");
+		return -1;
+	}
+
 	if (fp->readelfstrndx(f, fp) < 0)
 		return -1;
 

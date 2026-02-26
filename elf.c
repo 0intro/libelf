@@ -652,6 +652,8 @@ readelfstrndx(FILE *f, Fhdr *fp)
 	if (fp->strndx == NULL)
 		return -1;
 
+	fp->strndx[fp->strndxsize - 1] = '\0';
+
 	return 0;
 }
 

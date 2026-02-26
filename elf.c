@@ -612,6 +612,9 @@ newsection(FILE *f, uint64_t offset, uint64_t size)
 {
 	uint8_t *sect;
 
+	if (size == 0)
+		return NULL;
+
 	sect = malloc(size);
 	if (sect == NULL)
 		return NULL;

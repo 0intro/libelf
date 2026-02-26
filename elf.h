@@ -43,7 +43,7 @@ struct Fhdr {
 	uint64_t	size;
 
 	/* String Table */
-	uint32_t	strndxsize;	/* String Table size */
+	uint64_t	strndxsize;	/* String Table size */
 	uint8_t		*strndx;	/* Copy of String Table */
 };
 

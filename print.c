@@ -65,8 +65,14 @@ printelf64ehdr(Elf64_Ehdr *e, Fhdr *fp)
 void
 printelf32shdr(Elf32_Shdr *sh, Fhdr *fp)
 {
+	char *n;
+
+	n = getstr(fp, sh->name);
+	if (n == NULL)
+		n = "(null)";
+
 	printf("section header\n");
-	printf("name %s (%u)\n", getstr(fp, sh->name), sh->name);
+	printf("name %s (%u)\n", n, sh->name);
 	printf("type %u\n", sh->type);
 	printf("flags 0x%.8x\n", sh->flags);
 	printf("addr 0x%.8x\n", sh->addr);
@@ -98,8 +104,14 @@ printelf32phdr(Elf32_Phdr *ph, Fhdr *fp)
 void
 printelf64shdr(Elf64_Shdr *sh, Fhdr *fp)
 {
+	char *n;
+
+	n = getstr(fp, sh->name);
+	if (n == NULL)
+		n = "(null)";
+
 	printf("section header\n");
-	printf("name %s (%u)\n", getstr(fp, sh->name), sh->name);
+	printf("name %s (%u)\n", n, sh->name);
 	printf("type %u\n", sh->type);
 	printf("flags 0x%.16" PRIx64 "\n", sh->flags);
 	printf("addr 0x%.16" PRIx64 "\n", sh->addr);
